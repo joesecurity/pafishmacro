@@ -1,3 +1,10 @@
+v02
+
+- Added precise file name check
+- Fix Zone.Identifier check
+- Fix file log
+
+
 v01
 
 - First version
