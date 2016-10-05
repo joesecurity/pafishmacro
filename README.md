@@ -1,7 +1,7 @@
 # Pafish Macro
 ## (Paranoid Fish)
 
-Pafish Macro is a Macro enabled Office Document to detect malware analysis systems and sandboxes. It uses evasion & detection techniques implemented by malicious documents.
+Pafish Macro is a Macro enabled Office Document to detect malware analysis systems and sandboxes. It uses evasion & detection techniques implemented by recent malicious documents found in the public. 
 
 The VBS / VBA code is open source, you can study the code of all evasion tricks.
 
