@@ -28,8 +28,60 @@ Private Sub Document_Open()
    
    checkCores
    
+   checkAppCount
+   
+   checkApps
+   
    mark
    
+End Sub
+
+
+Public Sub checkApps()
+
+    printMsg "[*] WordBasic.AppGetNames ..."
+    
+    d = False
+    tns = Array("vmware", "vmtools", "vbox", "process explorer", "processhacker", "procmon", "visual basic", "fiddler", "wireshark")
+    Set ws = GetObject("winmgmts:\\.\root\cimv2")
+    
+    Dim names() As String
+    ReDim names(WordBasic.AppCount())
+    
+    WordBasic.AppGetNames names
+    
+    For Each n In names
+        For Each tn In tns
+            If InStr(LCase(n), tn) > 0 Then
+                d = True
+            End If
+        Next
+    Next
+
+    If d Then
+    
+        printMsg "DETECTED"
+        
+    Else
+    
+        printMsg "OK"
+    End If
+    
+End Sub
+
+Public Sub checkAppCount()
+
+    printMsg "[*] Checking WordBasic.AppCount() ..."
+
+    If WordBasic.AppCount() < 50 Then
+    
+        printMsg "DETECTED"
+        
+    Else
+    
+        printMsg "OK"
+    End If
+    
 End Sub
 
 Public Sub checkPreciseFileName()
@@ -144,7 +196,7 @@ Public Sub checkCores()
     
     For Each objItem In colItems
     
-            If objItem.NumberOfCores < 2 Then
+            If objItem.NumberOfCores < 3 Then
                 badCores = True
             End If
         
